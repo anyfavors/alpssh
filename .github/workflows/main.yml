@@ -56,9 +56,6 @@ jobs:
           tag: ${{ steps.semantic_version.outputs.version }}
 
 
-
-
-
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
@@ -74,9 +71,8 @@ jobs:
         uses: docker/metadata-action@v3.3.0
         with:
           images: ghcr.io/anyfavors/alpssh # list of Docker images to use as base name for tags
-          tag-semver: |
-            {{version}}
-            {{major}}.{{minor}}
+          tags: |
+            type=semver,enable=true,priority=900,value=${{ steps.semantic_version.outputs.version }
             
             
       - name: Set up QEMU
