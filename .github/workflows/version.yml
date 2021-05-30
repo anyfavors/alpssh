@@ -21,11 +21,13 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - name: checkout code
+        uses: actions/checkout@v2
         with:
          fetch-depth: 0
          
-      - uses: paulhatch/semantic-version@v4.0.2
+      - name: semantic version
+        uses: paulhatch/semantic-version@v4.0.2
         with:
           # The prefix to use to identify tags
          tag_prefix: "v"
@@ -46,3 +48,9 @@ jobs:
          short_tags: true
          # If this is set to true, *every* commit will be treated as a new version.
          bump_each_commit: true
+         
+      - name: do release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.semantic_version.outputs.version }}
