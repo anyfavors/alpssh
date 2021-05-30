@@ -72,7 +72,7 @@ jobs:
         with:
           images: ghcr.io/anyfavors/alpssh # list of Docker images to use as base name for tags
           tags: |
-            type=semver,enable=true,priority=900,value=${{ steps.semantic_version.outputs.version }}
+            type=semver,enable=true,priority=900,pattern={{version}},value=${{ steps.semantic_version.outputs.version }}
             
             
       - name: Set up QEMU
