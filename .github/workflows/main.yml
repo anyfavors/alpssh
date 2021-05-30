@@ -4,6 +4,8 @@ name: publish release image
 on:
   push:
     branches: [ main ]
+  schedule:
+    - cron: "0 06 * * 1"
     
 
   # Allows you to run this workflow manually from the Actions tab
