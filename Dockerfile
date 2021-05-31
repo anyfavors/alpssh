@@ -6,6 +6,7 @@ RUN apk add --no-cache openssh \
   && echo "root:toor" | chpasswd
 
 COPY rootfs /
+RUN chmod 755 config/docker-entrypoint.sh
 
 EXPOSE 22
 ENTRYPOINT ["/entrypoint.sh"]
