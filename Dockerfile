@@ -29,6 +29,7 @@ RUN apk --update add wget \
 		     php7-dom \
 		     python3 \
 		     sudo \
+		     bash \
 		     && rm /var/cache/apk/*
          
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer 
