@@ -26,12 +26,17 @@ RUN apk --update add wget \
 		     php7-xml \
 		     php7-tokenizer \
 		     php7-intl \		     
-		     php7-dom && rm /var/cache/apk/*
+		     php7-dom \
+		     python3 \
+		     sudo \
+		     && rm /var/cache/apk/*
          
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer 
 
 COPY rootfs /
 RUN chmod 755 /entrypoint.sh
+
+RUN adduser -h /home/smarc -s /bin/bash -D smarc
 
 EXPOSE 22
 ENTRYPOINT ["/entrypoint.sh"]
