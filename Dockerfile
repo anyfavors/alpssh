@@ -34,6 +34,7 @@ RUN apk --update add wget \
 		     libxml2-dev \
 		     sudo \
 		     bash \
+		     screen \
 		     && rm /var/cache/apk/*
          
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer 
