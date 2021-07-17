@@ -28,11 +28,28 @@ RUN apk --update add wget \
 		     php7-intl \		     
 		     php7-dom \
 		     python3 \
+		     py3-pip \
+		     py3-lxml \
+		     py3-regex \
+		     libxml2-dev \
 		     sudo \
 		     bash \
 		     && rm /var/cache/apk/*
          
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer 
+
+
+RUN apk add --no-cache \
+      chromium \
+      nss \
+      freetype \
+      harfbuzz \
+      ca-certificates \
+      ttf-freefont \
+      nodejs
+      
+RUN pip install requests requests_html parsel dateparser
+
 
 COPY rootfs /
 RUN chmod 755 /entrypoint.sh
