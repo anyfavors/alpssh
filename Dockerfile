@@ -35,21 +35,18 @@ RUN apk --update add wget \
 		     sudo \
 		     bash \
 		     screen \
+		     chromium \
+		     nss \
+		     freetype \
+		     harfbuzz \
+		     ca-certificates \
+		     ttf-freefont \
 		     && rm /var/cache/apk/*
          
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer 
 
-
-RUN apk add --no-cache \
-      chromium \
-      nss \
-      freetype \
-      harfbuzz \
-      ca-certificates \
-      ttf-freefont \
-      nodejs
-      
 RUN pip install requests requests_html parsel dateparser
+
 
 
 COPY rootfs /
