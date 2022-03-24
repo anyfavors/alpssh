@@ -1,5 +1,5 @@
   
-FROM alpine:3.14.3
+FROM alpine:3.15.2
 
 RUN apk add --no-cache openssh \
   && sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config \
